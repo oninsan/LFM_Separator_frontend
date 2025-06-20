@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Name Parser</title>
+    <link rel="icon" href="logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- <h1>📄 ClassList Splitter</h1> -->
+      <ul class="title-header">
+        <li><img src="logo.png" alt="" /></li>
+        <li><h1>ClassList Splitter</h1></li>
+      </ul>
+      <p>
+        Upload an Excel file (.xlsx) to separate student last name, first name,
+        and middle initial.
+      </p>
+
+      <div id="drop-area" class="drop-area">
+        <p>Drag & drop your Excel file here<br />or click to select</p>
+        <input type="file" id="fileElem" accept=".xlsx" />
+      </div>
+
+      <!-- Instruction Box -->
+      <div class="instruction-box">
+        <strong>📌 Required Format:</strong>
+        <p>
+          Your Excel file may contain <u>multiple sheets</u> for different
+          sections or subjects. Each sheet should contain a single column of
+          student names in the following format:
+          <br />
+          <code>Last name, First name Middle name</code>
+          <br />
+          Example: <em>Dela Cruz, Juan, Santos</em> <br /><br />
+          ✅ <strong>Column header</strong> can be anything.<br />
+          ✅ Ensure the last name and first name are separated by comma.<br />
+          ✅ Each sheet will be processed individually.
+        </p>
+      </div>
+
+      <div id="file-name" class="file-name"></div>
+      <button id="processBtn" disabled>Process File</button>
+
+      <div id="output" class="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

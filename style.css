@@ -1,0 +1,174 @@
+/* Base Reset & Defaults */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #eef2f5;
+  color: #333;
+  line-height: 1.6;
+  background: #eef2f5 url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%239ca3af'/%3E%3C/svg%3E") repeat;
+  background-size: 40px 40px;
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+}
+
+/* Headings */
+h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  color: #222;
+}
+
+.container > p {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Drop Area */
+.drop-area {
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 35px;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: background 0.3s ease, border 0.3s ease;
+  position: relative;
+}
+
+.drop-area:hover,
+.drop-area.dragover {
+  background: #f0faff;
+  border-color: #3b82f6;
+}
+
+.drop-area p {
+  margin: 0;
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.title-header {
+  list-style: none;
+}
+
+.title-header > li {
+  display: inline-block;
+}
+
+.title-header > li > img {
+  width: 30px;
+  /* margin-top: 100px; */
+}
+
+/* File Input */
+#fileElem {
+  display: none;
+}
+
+/* File Name Display */
+.file-name {
+  margin: 20px 0;
+  font-weight: 600;
+  color: #444;
+  font-size: 15px;
+  word-wrap: break-word;
+}
+
+/* Button */
+button {
+  background: #3b82f6;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 160px;
+  margin-top: 10px;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+button:hover:enabled {
+  background: #2563eb;
+}
+
+/* Instruction Box */
+.instruction-box {
+  background: #f0f9ff;
+  border: 1px dashed #3b82f6;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  text-align: left;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.instruction-box code {
+  background: #e0f2fe;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #0369a1;
+}
+
+/* Output Box */
+.output {
+  margin-top: 30px;
+  text-align: left;
+  font-size: 14px;
+  background-color: #f1f5f9;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 640px) {
+  .container {
+    margin: 20px;
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .drop-area {
+    padding: 25px;
+  }
+
+  .file-name,
+  .output {
+    font-size: 13px;
+  }
+}
