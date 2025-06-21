@@ -31,13 +31,13 @@ fileElem.addEventListener("change", () => {
 });
 
 function handleFiles(files) {
-  if (files.length > 0 && files[0].name.endsWith(".xlsx")) {
+  if (files.length > 0 && files[0].name.endsWith(".pdf")) {
     selectedFile = files[0];
     fileNameDisplay.textContent = selectedFile.name;
     processBtn.disabled = false;
   } else {
     fileNameDisplay.textContent =
-      "Invalid file type. Please upload an .xlsx file.";
+      "Invalid file type. Please upload an .pdf file.";
     processBtn.disabled = true;
   }
 }
@@ -48,9 +48,10 @@ processBtn.addEventListener("click", () => {
   output.innerHTML = "📦 Processing file...";
 
   const formData = new FormData();
-  formData.append("workbook", selectedFile);
+  formData.append("file", selectedFile);
 
-  fetch("https://oninsan.pythonanywhere.com/api/lfm", {
+  // "https://oninsan.pythonanywhere.com/api/lfm" current api
+  fetch("http://localhost:5000/api/lfm", {
     method: "POST",
     body: formData,
   })
