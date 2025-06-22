@@ -15,29 +15,33 @@
         <li><h1>ClassList Splitter</h1></li>
       </ul>
       <p>
-        Upload an PDF file (.pdf) to separate student last name, first name, and
-        middle initial.
+        Upload a <strong>PDF file</strong> exported from
+        <strong>Scholista</strong> to separate student last name, first name,
+        and middle initial.
       </p>
 
       <div id="drop-area" class="drop-area">
-        <p>Drag & drop your Excel file here<br />or click to select</p>
-        <input type="file" id="fileElem" accept=".pdf" />
+        <p>
+          Drag & drop your <strong>PDF file</strong> here<br />or click to
+          select
+        </p>
+        <input type="file" id="fileElem" accept=".pdf" multiple />
       </div>
 
       <!-- Instruction Box -->
       <div class="instruction-box">
-        <strong>📌 Required Format:</strong>
+        <strong>📌 Required File:</strong>
         <p>
-          Your Excel file may contain <u>multiple sheets</u> for different
-          sections or subjects. Each sheet should contain a single column of
-          student names in the following format:
-          <br />
-          <code>Last name, First name Middle name</code>
-          <br />
-          Example: <em>Dela Cruz, Juan Santos</em> <br /><br />
-          ✅ <strong>Column header</strong> can be anything.<br />
-          ✅ Ensure the last name and first name are separated by comma.<br />
-          ✅ Each sheet will be processed individually.
+          Please upload a <strong>PDF file</strong> exported from your Scholista
+          class list.<br /><br />
+          ✅ The PDF must be <strong>clear and readable</strong> (no blur or
+          corruption).<br />
+          ✅ Only the class list PDF is required — other files will be
+          ignored.<br />
+          ✅ Names should follow this format in the PDF:<br />
+          <code>Last name, First name Middle name</code><br />
+          Example: <em>Dela Cruz, Juan Santos</em><br /><br />
+          Supported format: <strong>PDF</strong>
         </p>
       </div>
 
