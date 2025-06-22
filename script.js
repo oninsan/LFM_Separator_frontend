@@ -3,7 +3,7 @@ const fileElem = document.getElementById("fileElem");
 const fileNameDisplay = document.getElementById("file-name");
 const processBtn = document.getElementById("processBtn");
 const output = document.getElementById("output");
-let selectedFile = null;
+let selectedFiles = [];
 
 dropArea.addEventListener("click", () => fileElem.click());
 
@@ -31,26 +31,28 @@ fileElem.addEventListener("change", () => {
 });
 
 function handleFiles(files) {
-  if (files.length > 0 && files[0].name.endsWith(".xlsx")) {
-    selectedFile = files[0];
-    fileNameDisplay.textContent = selectedFile.name;
+  selectedFiles = Array.from(files).filter((file) => /\.pdf$/i.test(file.name));
+  if (selectedFiles.length > 0) {
+    fileNameDisplay.textContent = selectedFiles.map((f) => f.name).join(", ");
     processBtn.disabled = false;
   } else {
     fileNameDisplay.textContent =
-      "Invalid file type. Please upload an .xlsx file.";
+      "Invalid file type. Please upload PDF files from Scholista only.";
     processBtn.disabled = true;
   }
 }
 
 processBtn.addEventListener("click", () => {
-  if (!selectedFile) return;
+  if (selectedFiles.length === 0) return;
 
-  output.innerHTML = "📦 Processing file...";
+  output.innerHTML = "📦 Processing file(s)...";
 
   const formData = new FormData();
-  formData.append("workbook", selectedFile);
+  selectedFiles.forEach((file, idx) => {
+    formData.append("file", file); // backend should expect 'files'
+  });
 
-  fetch("https://oninsan.pythonanywhere.com/api/lfm", {
+  fetch("http://localhost:5000/api/lfm", {
     method: "POST",
     body: formData,
   })
