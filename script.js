@@ -52,7 +52,7 @@ processBtn.addEventListener("click", () => {
     formData.append("file", file); // backend should expect 'files'
   });
 
-  fetch("https://lfm-separator-1.onrender.com/api/lfm", {
+  fetch("https://oninsan.pythonanywhere.com/api/lfm", {
     method: "POST",
     body: formData,
   })
