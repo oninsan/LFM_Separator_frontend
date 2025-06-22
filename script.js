@@ -48,17 +48,39 @@ processBtn.addEventListener("click", () => {
   output.innerHTML = "📦 Processing file(s)...";
 
   const formData = new FormData();
-  selectedFiles.forEach((file, idx) => {
-    formData.append("file", file); // backend should expect 'files'
+  selectedFiles.forEach((file) => {
+    formData.append("file", file);
   });
 
-  fetch("https://oninsan.pythonanywhere.com/api/lfm", {
-    method: "POST",
-    body: formData,
-  })
+  const endpoints = [
+    "https://lfm-separator-1.onrender.com/api/lfm",
+    "https://oninsan.pythonanywhere.com/api/lfm",
+  ];
+
+  // Helper to fetch with timeout
+  function fetchWithTimeout(resource, options = {}, timeout = 10000) {
+    return Promise.race([
+      fetch(resource, options),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Timeout")), timeout)
+      ),
+    ]);
+  }
+
+  fetchWithTimeout(endpoints[0], { method: "POST", body: formData }, 10000)
     .then((response) => {
       if (!response.ok) throw new Error("Network response was not ok");
       return response.blob();
+    })
+    .catch(() => {
+      return fetchWithTimeout(
+        endpoints[1],
+        { method: "POST", body: formData },
+        10000
+      ).then((response) => {
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.blob();
+      });
     })
     .then((blob) => {
       const url = window.URL.createObjectURL(blob);
